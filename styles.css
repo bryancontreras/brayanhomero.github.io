@@ -1150,37 +1150,41 @@ body {
     font-size: 1.2rem;
 }
 
-.contact-form {
+.contact-cta {
     background: white;
-    padding: 2rem;
+    padding: 3rem 2rem;
     border-radius: 12px;
     box-shadow: var(--shadow-md);
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
-.form-group {
-    margin-bottom: 1.5rem;
+.contact-cta h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
 }
 
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 0.875rem;
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
-    font-size: 1rem;
-    font-family: inherit;
-    transition: border-color 0.3s ease;
+.contact-cta p {
+    color: #64748b;
+    margin-bottom: 2rem;
+    line-height: 1.6;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
-.form-group textarea {
-    resize: vertical;
-    min-height: 120px;
+.btn-large:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
 }
 
 /* Footer */
