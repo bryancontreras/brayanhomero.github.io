@@ -527,4 +527,46 @@ function initializeDashboardCharts() {
             }
         });
     }
+
+    // Sistema de traducción de idiomas
+    const languageBtn = document.getElementById('languageBtn');
+    let currentLanguage = localStorage.getItem('language') || 'es';
+    
+    // Configurar idioma inicial
+    setLanguage(currentLanguage);
+    
+    // Event listener para el botón de idioma
+    languageBtn.addEventListener('click', function() {
+        currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+        setLanguage(currentLanguage);
+        localStorage.setItem('language', currentLanguage);
+    });
+    
+    function setLanguage(lang) {
+        // Actualizar todos los elementos con atributos data-es y data-en
+        const elements = document.querySelectorAll('[data-es][data-en]');
+        elements.forEach(element => {
+            if (element.tagName === 'SPAN' && element.parentElement.classList.contains('hero-title')) {
+                // Caso especial para el saludo en el título
+                element.textContent = element.getAttribute('data-' + lang);
+            } else {
+                element.textContent = element.getAttribute('data-' + lang);
+            }
+        });
+        
+        // Actualizar el botón de idioma
+        const flagIcon = languageBtn.querySelector('.flag-icon');
+        const langText = languageBtn.querySelector('.lang-text');
+        
+        if (lang === 'es') {
+            flagIcon.textContent = '🇺🇸';
+            langText.textContent = 'EN';
+        } else {
+            flagIcon.textContent = '🇪🇸';
+            langText.textContent = 'ES';
+        }
+        
+        // Almacenar idioma actual
+        currentLanguage = lang;
+    }
 }

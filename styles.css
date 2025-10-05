@@ -98,6 +98,35 @@ body {
     width: 100%;
 }
 
+/* Language Toggle */
+.language-toggle {
+    margin-left: 1rem;
+}
+
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.flag-icon {
+    font-size: 1.2rem;
+}
+
 .hamburger {
     display: none;
     flex-direction: column;
@@ -1199,6 +1228,16 @@ body {
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
+    }
+
+    .language-toggle {
+        margin-left: 0.5rem;
+        margin-right: 1rem;
+    }
+
+    .lang-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
     }
 
     .nav-menu {
