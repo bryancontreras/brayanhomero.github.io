@@ -889,8 +889,10 @@ body {
     margin: 0 auto;
     padding: 0 2rem 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    justify-content: center;
+    align-items: start;
 }
 
 .dashboard-project-card {
@@ -899,11 +901,15 @@ body {
     border-radius: 1rem;
     padding: 1.5rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.2s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
 }
 
 .dashboard-project-card:hover {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .project-icon-circle {
@@ -939,15 +945,24 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 1rem;
 }
 
 .chip {
     background: #dbeafe;
     color: #1d4ed8;
     border: 1px solid #bfdbfe;
-    padding: 0.25rem 0.75rem;
+    padding: 0.4rem 0.8rem;
     border-radius: 9999px;
     font-size: 0.75rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.chip:hover {
+    background: #bfdbfe;
+    transform: scale(1.05);
 }
 
 /* Footer del dashboard */
@@ -1238,7 +1253,8 @@ html {
     }
     
     .dashboard-projects-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
 }
 
@@ -1263,6 +1279,11 @@ html {
     .dashboard-footer {
         padding-left: 1rem;
         padding-right: 1rem;
+    }
+    
+    .dashboard-projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
     
     .kpi-number {
