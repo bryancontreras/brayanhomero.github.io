@@ -46,15 +46,52 @@ document.addEventListener('DOMContentLoaded', function() {
     markActiveSection();
 });
 
-// Efecto parallax sutil en el hero
-window.addEventListener('scroll', function() {
-    const scrolled = window.pageYOffset;
-    const parallax = document.querySelector('.hero');
-    const speed = scrolled * 0.5;
+// Navegación móvil
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // Toggle menu móvil
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    // Cerrar menu al hacer click en un link
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+
+    // Navegación suave y marca de sección activa
+    const sections = document.querySelectorAll('section[id]');
     
-    if (parallax) {
-        parallax.style.transform = `translateY(${speed}px)`;
+    function markActiveSection() {
+        const scrollPosition = window.scrollY + 100;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            const correspondingLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                navLinks.forEach(link => link.classList.remove('active'));
+                if (correspondingLink) {
+                    correspondingLink.classList.add('active');
+                }
+            }
+        });
     }
+
+    // Ejecutar al hacer scroll
+    window.addEventListener('scroll', markActiveSection);
+    
+    // Ejecutar al cargar la página
+    markActiveSection();
 });
 
 // Animaciones al hacer scroll
@@ -124,128 +161,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const statsSection = document.querySelector('.stats');
     if (statsSection) {
         statsObserver.observe(statsSection);
-    }
-});
-
-// Formulario de contacto
-document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contactForm');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Obtener los datos del formulario
-            const formData = new FormData(contactForm);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const message = formData.get('message');
-            
-            // Validación básica
-            if (!name || !email || !message) {
-                showNotification('Por favor, completa todos los campos.', 'error');
-                return;
-            }
-            
-            if (!isValidEmail(email)) {
-                showNotification('Por favor, ingresa un email válido.', 'error');
-                return;
-            }
-            
-            // Simular envío (aquí integrarías con tu servicio de email)
-            showNotification('¡Gracias por tu mensaje! Te contactaré pronto.', 'success');
-            contactForm.reset();
-        });
-    }
-});
-
-// Validación de email
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-// Sistema de notificaciones
-function showNotification(message, type = 'info') {
-    // Crear elemento de notificación
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.textContent = message;
-    
-    // Estilos para la notificación
-    Object.assign(notification.style, {
-        position: 'fixed',
-        top: '20px',
-        right: '20px',
-        padding: '1rem 1.5rem',
-        borderRadius: '8px',
-        color: 'white',
-        fontWeight: '500',
-        zIndex: '10000',
-        opacity: '0',
-        transform: 'translateX(100%)',
-        transition: 'all 0.3s ease',
-        maxWidth: '300px',
-        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
-    });
-    
-    // Colores según el tipo
-    const colors = {
-        success: '#10b981',
-        error: '#ef4444',
-        info: '#3b82f6',
-        warning: '#f59e0b'
-    };
-    
-    notification.style.backgroundColor = colors[type] || colors.info;
-    
-    // Agregar al DOM
-    document.body.appendChild(notification);
-    
-    // Animar entrada
-    setTimeout(() => {
-        notification.style.opacity = '1';
-        notification.style.transform = 'translateX(0)';
-    }, 100);
-    
-    // Remover después de 5 segundos
-    setTimeout(() => {
-        notification.style.opacity = '0';
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.parentNode.removeChild(notification);
-            }
-        }, 300);
-    }, 5000);
-}
-
-// Efecto de escritura para el título
-function typeWriter(element, text, speed = 100) {
-    let i = 0;
-    element.textContent = '';
-    
-    function type() {
-        if (i < text.length) {
-            element.textContent += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-    
-    type();
-}
-
-// Header transparente al hacer scroll
-window.addEventListener('scroll', function() {
-    const header = document.querySelector('.header');
-    const scrollPosition = window.scrollY;
-    
-    if (scrollPosition > 100) {
-        header.style.background = 'rgba(255, 255, 255, 0.95)';
-        header.style.backdropFilter = 'blur(10px)';
-    } else {
-        header.style.background = 'rgba(255, 255, 255, 0.95)';
     }
 });
 
