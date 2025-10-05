@@ -284,3 +284,106 @@ function preloadCriticalResources() {
 
 // Ejecutar preload al cargar la página
 document.addEventListener('DOMContentLoaded', preloadCriticalResources);
+
+// Dashboard Charts
+document.addEventListener('DOMContentLoaded', function() {
+    initDashboardCharts();
+});
+
+function initDashboardCharts() {
+    // Datos de ingresos (simplificado de tu archivo React)
+    const revenueData = {
+        labels: ['2021', '2022', '2023', '2024', '2025'],
+        datasets: [{
+            label: 'Ingresos (M)',
+            data: [1580, 1850, 2260, 2890, 4080],
+            borderColor: '#1e40af',
+            backgroundColor: 'rgba(30, 64, 175, 0.1)',
+            tension: 0.4,
+            fill: true
+        }]
+    };
+
+    // Datos de Pareto
+    const paretoData = {
+        labels: ['A', 'B', 'C', 'D', 'E', 'F'],
+        datasets: [{
+            label: 'Valor',
+            data: [340, 260, 180, 120, 90, 60],
+            backgroundColor: [
+                '#1e40af',
+                '#2563eb',
+                '#3b82f6',
+                '#60a5fa',
+                '#93c5fd',
+                '#dbeafe'
+            ],
+            borderColor: '#1e3a8a',
+            borderWidth: 1
+        }]
+    };
+
+    // Configuración común
+    const commonOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: {
+                    padding: 20,
+                    usePointStyle: true
+                }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                grid: {
+                    color: '#f1f5f9'
+                }
+            },
+            x: {
+                grid: {
+                    display: false
+                }
+            }
+        }
+    };
+
+    // Crear gráfico de ingresos
+    const revenueCtx = document.getElementById('revenueChart');
+    if (revenueCtx) {
+        new Chart(revenueCtx, {
+            type: 'line',
+            data: revenueData,
+            options: {
+                ...commonOptions,
+                plugins: {
+                    ...commonOptions.plugins,
+                    title: {
+                        display: false
+                    }
+                }
+            }
+        });
+    }
+
+    // Crear gráfico de Pareto
+    const paretoCtx = document.getElementById('paretoChart');
+    if (paretoCtx) {
+        new Chart(paretoCtx, {
+            type: 'bar',
+            data: paretoData,
+            options: {
+                ...commonOptions,
+                plugins: {
+                    ...commonOptions.plugins,
+                    title: {
+                        display: false
+                    }
+                }
+            }
+        });
+    }
+}

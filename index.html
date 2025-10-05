@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -237,6 +238,59 @@
     <section id="projects" class="projects">
         <div class="container">
             <h2 class="section-title">Proyectos Destacados</h2>
+            
+            <!-- Dashboard Interactivo -->
+            <div class="dashboard-showcase">
+                <h3 class="dashboard-title">
+                    <i class="fas fa-chart-line"></i>
+                    Dashboard Ejecutivo Interactivo
+                </h3>
+                <p class="dashboard-description">
+                    Demo de suite analítica con KPIs ejecutivos, análisis de tendencias y control estadístico de procesos.
+                    Datos de ejemplo que demuestran capacidades de visualización y análisis avanzado.
+                </p>
+                
+                <!-- KPI Cards -->
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-value">20M+</div>
+                        <div class="kpi-label">Registros Analizados</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">15</div>
+                        <div class="kpi-label">Dashboards Desplegados</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">50+</div>
+                        <div class="kpi-label">Cursos Impartidos</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">4</div>
+                        <div class="kpi-label">Universidades</div>
+                    </div>
+                </div>
+
+                <!-- Charts Container -->
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <h4>Evolución de Ingresos (5 años)</h4>
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h4>Análisis Pareto por Categoría</h4>
+                        <canvas id="paretoChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Tech Stack -->
+                <div class="dashboard-tech">
+                    <span class="tech-tag">Chart.js</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">CSS Grid</span>
+                    <span class="tech-tag">Responsive Design</span>
+                </div>
+            </div>
+
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-icon">
