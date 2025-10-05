@@ -1,7 +1,7 @@
 {
-  "name": "brayan-rc-portfolio",
+  "name": "brayan-homero-portfolio",
   "version": "1.0.0",
-  "description": "Portfolio personal de Brayan RC - Senior Business Intelligence Analyst",
+  "description": "Portfolio personal de Brayan Homero - Senior Business Intelligence Analyst",
   "main": "index.html",
   "scripts": {
     "start": "npx live-server .",
@@ -25,8 +25,8 @@
     "sigma"
   ],
   "author": {
-    "name": "Brayan RC",
-    "email": "tu-email@ejemplo.com",
+    "name": "Brayan Homero",
+    "email": "bryan.h.3@outlook.com",
     "url": "https://www.linkedin.com/in/brayanrc/"
   },
   "license": "MIT",

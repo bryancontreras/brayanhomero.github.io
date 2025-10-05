@@ -1,4 +1,4 @@
-# Brayan RC - Portfolio Personal
+# Brayan Homero - Portfolio Personal
 
 ## Senior Business Intelligence Analyst
 
@@ -98,7 +98,7 @@
 
 - **LinkedIn**: [linkedin.com/in/brayanrc](https://www.linkedin.com/in/brayanrc/)
 - **GitHub**: [Actualizar con tu usuario de GitHub]
-- **Email**: [Actualizar con tu email profesional]
+- **Email**: [bryan.h.3@outlook.com]
 
 ### 📈 Proyectos Destacados (Ejemplos)
 
@@ -147,7 +147,7 @@ Si encuentras algún bug o tienes sugerencias de mejora, no dudes en:
 ### 📞 Contacto
 
 - **LinkedIn**: [https://www.linkedin.com/in/brayanrc/](https://www.linkedin.com/in/brayanrc/)
-- **Email**: [Tu email profesional]
+- **Email**: bryan.h.3@outlook.com
 - **GitHub**: [Tu usuario de GitHub]
 
 ---
