@@ -237,60 +237,166 @@
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
-            <h2 class="section-title">Proyectos Destacados</h2>
+            <h2 class="section-title">Dashboard Ejecutivo Interactivo</h2>
             
-            <!-- Dashboard Interactivo -->
-            <div class="dashboard-showcase">
-                <h3 class="dashboard-title">
-                    <i class="fas fa-chart-line"></i>
-                    Dashboard Ejecutivo Interactivo
-                </h3>
-                <p class="dashboard-description">
-                    Demo de suite analítica con KPIs ejecutivos, análisis de tendencias y control estadístico de procesos.
-                    Datos de ejemplo que demuestran capacidades de visualización y análisis avanzado.
-                </p>
-                
-                <!-- KPI Cards -->
-                <div class="kpi-grid">
-                    <div class="kpi-card">
-                        <div class="kpi-value">20M+</div>
-                        <div class="kpi-label">Registros Analizados</div>
+            <!-- Dashboard completo -->
+            <div class="dashboard-full">
+                <!-- Hero del Dashboard -->
+                <div class="dashboard-hero">
+                    <h1 class="dashboard-main-title">Portafolio – Senior Business Intelligence Analyst</h1>
+                    <p class="dashboard-main-description">
+                        Impulso decisiones estratégicas con datos confiables. Diseño modelos analíticos, 
+                        orquesto procesos end-to-end y traduzco métricas en acciones que mejoran ingresos, 
+                        eficiencia y experiencia del cliente.
+                    </p>
+                </div>
+
+                <!-- KPI Cards principales -->
+                <div class="dashboard-kpis">
+                    <div class="dashboard-kpi-card">
+                        <div class="kpi-number">20M+</div>
+                        <div class="kpi-description">Registros Analizados</div>
                     </div>
-                    <div class="kpi-card">
-                        <div class="kpi-value">15</div>
-                        <div class="kpi-label">Dashboards Desplegados</div>
+                    <div class="dashboard-kpi-card">
+                        <div class="kpi-number">15</div>
+                        <div class="kpi-description">Dashboards Desplegados</div>
                     </div>
-                    <div class="kpi-card">
-                        <div class="kpi-value">50+</div>
-                        <div class="kpi-label">Cursos Impartidos</div>
+                    <div class="dashboard-kpi-card">
+                        <div class="kpi-number">50+</div>
+                        <div class="kpi-description">Cursos Impartidos</div>
                     </div>
-                    <div class="kpi-card">
-                        <div class="kpi-value">4</div>
-                        <div class="kpi-label">Universidades</div>
+                    <div class="dashboard-kpi-card">
+                        <div class="kpi-number">4</div>
+                        <div class="kpi-description">Universidades donde he dado clase</div>
                     </div>
                 </div>
 
-                <!-- Charts Container -->
-                <div class="charts-grid">
-                    <div class="chart-container">
-                        <h4>Evolución de Ingresos (5 años)</h4>
-                        <canvas id="revenueChart"></canvas>
+                <!-- Sección de Experiencia con Organizaciones -->
+                <div class="dashboard-experience-section">
+                    <div class="experience-card">
+                        <h3>Experiencia con organizaciones</h3>
+                        <p>He colaborado con empresas de consumo, transporte, finanzas y sector público.</p>
+                        <div class="org-tags">
+                            <span class="org-tag">Volaris</span>
+                            <span class="org-tag">Galletas Dondé</span>
+                            <span class="org-tag">Deacero</span>
+                            <span class="org-tag">Deintec</span>
+                            <span class="org-tag">Grupo Cynthus</span>
+                            <span class="org-tag">Grupo Galería (Carl's Jr)</span>
+                            <span class="org-tag">Grupo IAMSA</span>
+                            <span class="org-tag">CFE</span>
+                            <span class="org-tag">Grupo AlEn</span>
+                            <span class="org-tag">Banorte</span>
+                            <span class="org-tag">Infonavit</span>
+                            <span class="org-tag">CNBV</span>
+                            <span class="org-tag">Profuturo</span>
+                        </div>
                     </div>
-                    <div class="chart-container">
-                        <h4>Análisis Pareto por Categoría</h4>
-                        <canvas id="paretoChart"></canvas>
+                    <div class="experience-card health-sector">
+                        <h3>Sector Salud</h3>
+                        <p>Proyectos analíticos y operativos en hospitales y servicios médicos.</p>
+                        <div class="health-tags">
+                            <span class="health-tag">Hospital Gea González</span>
+                            <span class="health-tag">Vitalmex</span>
+                            <span class="health-tag">Central de Emergencias ISSSTE</span>
+                            <span class="health-tag">4Doctors</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Tech Stack -->
-                <div class="dashboard-tech">
-                    <span class="tech-tag">Chart.js</span>
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">CSS Grid</span>
-                    <span class="tech-tag">Responsive Design</span>
+                <!-- Sección de gráficos principales -->
+                <div class="dashboard-charts-main">
+                    <!-- Gráfico principal de Ingresos -->
+                    <div class="main-chart-container">
+                        <div class="chart-header">
+                            <h3>Ingresos y Margen (5 años)</h3>
+                            <span class="chart-total">Total: 12,757 u.</span>
+                        </div>
+                        <div class="chart-canvas-container">
+                            <canvas id="mainRevenueChart"></canvas>
+                        </div>
+                        <p class="chart-description">Serie sintética con tendencia, estacionalidad y mejora gradual de margen (storytelling de crecimiento sostenido).</p>
+                    </div>
+                </div>
+
+                <!-- Grid de gráficos secundarios -->
+                <div class="dashboard-charts-grid">
+                    <div class="chart-card">
+                        <h3>Pareto de Ingresos por Categoría</h3>
+                        <div class="chart-canvas-container secondary">
+                            <canvas id="paretoChart"></canvas>
+                        </div>
+                        <p class="chart-description">Demuestra priorización 80/20 y enfoque en categorías críticas (A/B/C).</p>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Control Chart – Tiempo de Ciclo</h3>
+                        <div class="chart-canvas-container secondary">
+                            <canvas id="spcChart"></canvas>
+                        </div>
+                        <p class="chart-description">Muestra control estadístico del proceso y mejoras de eficiencia en el tiempo.</p>
+                    </div>
+                </div>
+
+                <!-- Proyectos destacados con iconos */
+                <div class="dashboard-projects-grid">
+                    <div class="dashboard-project-card">
+                        <div class="project-icon-circle">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Suite Ejecutiva de KPIs</h3>
+                        <p>Visión 360° de ingresos, margen, costos y satisfacción con navegación drill-through y control de acceso por rol.</p>
+                        <div class="project-chips">
+                            <span class="chip">KPIs</span>
+                            <span class="chip">Modelado</span>
+                            <span class="chip">Gobernanza</span>
+                        </div>
+                    </div>
+                    <div class="dashboard-project-card">
+                        <div class="project-icon-circle">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Modelado y Marts con Buenas Prácticas</h3>
+                        <p>Diseño de modelos en capas y data marts orientados a decisiones, con pruebas de calidad y documentación.</p>
+                        <div class="project-chips">
+                            <span class="chip">dbt</span>
+                            <span class="chip">Calidad</span>
+                            <span class="chip">Linaje</span>
+                        </div>
+                    </div>
+                    <div class="dashboard-project-card">
+                        <div class="project-icon-circle">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Auditoría Continua</h3>
+                        <p>Controles de compras/pagos (duplicados, sin PO, fraccionamiento) con trazabilidad a documento.</p>
+                        <div class="project-chips">
+                            <span class="chip">Controles</span>
+                            <span class="chip">Riesgo</span>
+                            <span class="chip">Trazabilidad</span>
+                        </div>
+                    </div>
+                    <div class="dashboard-project-card">
+                        <div class="project-icon-circle">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Optimización de Operaciones</h3>
+                        <p>Reducción de tiempos de ciclo y variabilidad, con monitoreo SPC y metas de servicio.</p>
+                        <div class="project-chips">
+                            <span class="chip">Eficiencia</span>
+                            <span class="chip">SPC</span>
+                            <span class="chip">SLA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer del dashboard -->
+                <div class="dashboard-footer">
+                    <p>*Datos de ejemplo y anonimizados. Sustituye los arreglos por tus JSON reales o un endpoint.</p>
                 </div>
             </div>
 
+            <!-- Proyectos regulares -->
+            <h2 class="section-title" style="margin-top: 4rem;">Otros Proyectos</h2>
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-icon">
