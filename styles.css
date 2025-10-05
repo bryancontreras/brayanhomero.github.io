@@ -360,38 +360,6 @@ body {
     line-height: 1.8;
 }
 
-.stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.stat {
-    text-align: center;
-    padding: 2rem;
-    background: white;
-    border-radius: 12px;
-    box-shadow: var(--shadow-md);
-    transition: transform 0.3s ease;
-}
-
-.stat:hover {
-    transform: translateY(-5px);
-}
-
-.stat h3 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
-}
-
-.stat p {
-    color: var(--text-secondary);
-    font-weight: 500;
-}
-
 /* Experience Section */
 .experience {
     padding: 6rem 0;
@@ -1129,11 +1097,6 @@ body {
 
     .profile-circle i {
         font-size: 4rem;
-    }
-
-    .stats {
-        grid-template-columns: 1fr;
-        gap: 1rem;
     }
 
     .contact-content {

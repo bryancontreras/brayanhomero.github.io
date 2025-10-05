@@ -119,51 +119,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Contador animado para las estadísticas
-function animateCounters() {
-    const counters = document.querySelectorAll('.stat h3');
-    
-    counters.forEach(counter => {
-        const target = counter.textContent;
-        const isNumber = !isNaN(target);
-        
-        if (isNumber) {
-            const targetNumber = parseInt(target);
-            const increment = targetNumber / 100;
-            let current = 0;
-            
-            const updateCounter = () => {
-                if (current < targetNumber) {
-                    current += increment;
-                    counter.textContent = Math.ceil(current);
-                    setTimeout(updateCounter, 20);
-                } else {
-                    counter.textContent = target;
-                }
-            };
-            
-            updateCounter();
-        }
-    });
-}
-
-// Observar la sección de estadísticas para iniciar animación
-const statsObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            animateCounters();
-            statsObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.5 });
-
-document.addEventListener('DOMContentLoaded', function() {
-    const statsSection = document.querySelector('.stats');
-    if (statsSection) {
-        statsObserver.observe(statsSection);
-    }
-});
-
 // Efecto de cursor personalizado (opcional)
 document.addEventListener('DOMContentLoaded', function() {
     const cursor = document.createElement('div');
