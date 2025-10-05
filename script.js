@@ -287,100 +287,286 @@ document.addEventListener('DOMContentLoaded', preloadCriticalResources);
 
 // Dashboard Charts
 document.addEventListener('DOMContentLoaded', function() {
-    initDashboardCharts();
+    initializeDashboardCharts();
 });
 
-function initDashboardCharts() {
-    // Datos de ingresos (simplificado de tu archivo React)
-    const revenueData = {
-        labels: ['2021', '2022', '2023', '2024', '2025'],
-        datasets: [{
-            label: 'Ingresos (M)',
-            data: [1580, 1850, 2260, 2890, 4080],
-            borderColor: '#1e40af',
-            backgroundColor: 'rgba(30, 64, 175, 0.1)',
-            tension: 0.4,
-            fill: true
-        }]
-    };
-
-    // Datos de Pareto
-    const paretoData = {
-        labels: ['A', 'B', 'C', 'D', 'E', 'F'],
-        datasets: [{
-            label: 'Valor',
-            data: [340, 260, 180, 120, 90, 60],
-            backgroundColor: [
-                '#1e40af',
-                '#2563eb',
-                '#3b82f6',
-                '#60a5fa',
-                '#93c5fd',
-                '#dbeafe'
-            ],
-            borderColor: '#1e3a8a',
-            borderWidth: 1
-        }]
-    };
-
-    // Configuración común
-    const commonOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: {
-                position: 'bottom',
-                labels: {
-                    padding: 20,
-                    usePointStyle: true
-                }
-            }
-        },
-        scales: {
-            y: {
-                beginAtZero: true,
-                grid: {
-                    color: '#f1f5f9'
-                }
-            },
-            x: {
-                grid: {
-                    display: false
-                }
-            }
-        }
-    };
-
-    // Crear gráfico de ingresos
+// Initialize Dashboard Charts
+function initializeDashboardCharts() {
+    // Chart.js default configuration
+    Chart.defaults.color = '#64748b';
+    Chart.defaults.font.family = "'Inter', sans-serif";
+    Chart.defaults.font.size = 12;
+    
+    // Revenue Trend Chart
     const revenueCtx = document.getElementById('revenueChart');
     if (revenueCtx) {
         new Chart(revenueCtx, {
             type: 'line',
-            data: revenueData,
+            data: {
+                labels: ['2019', '2020', '2021', '2022', '2023', '2024'],
+                datasets: [{
+                    label: 'Facturación (MXN)',
+                    data: [85000000, 92000000, 108000000, 125000000, 142000000, 158000000],
+                    borderColor: '#1d4ed8',
+                    backgroundColor: 'rgba(29, 78, 216, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#1d4ed8',
+                    pointBorderColor: '#ffffff',
+                    pointBorderWidth: 2,
+                    pointRadius: 6
+                }]
+            },
             options: {
-                ...commonOptions,
+                responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
-                    ...commonOptions.plugins,
-                    title: {
+                    legend: {
                         display: false
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(30, 41, 59, 0.9)',
+                        titleColor: '#ffffff',
+                        bodyColor: '#ffffff',
+                        borderColor: '#1d4ed8',
+                        borderWidth: 1,
+                        cornerRadius: 8,
+                        displayColors: false,
+                        callbacks: {
+                            label: function(context) {
+                                return 'Facturación: $' + context.parsed.y.toLocaleString('es-MX');
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        border: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#f1f5f9'
+                        },
+                        border: {
+                            display: false
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + (value / 1000000) + 'M';
+                            }
+                        }
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                }
+            }
+        });
+    }
+
+    // Pareto Analysis Chart
+    const paretoCtx = document.getElementById('paretoChart');
+    if (paretoCtx) {
+        new Chart(paretoCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Cardio', 'Oncología', 'Neurología', 'Pediatría', 'Emergencias', 'Otros'],
+                datasets: [{
+                    label: 'Ingresos por Especialidad',
+                    data: [45000000, 38000000, 25000000, 18000000, 15000000, 17000000],
+                    backgroundColor: [
+                        '#1d4ed8',
+                        '#2563eb',
+                        '#3b82f6',
+                        '#60a5fa',
+                        '#93c5fd',
+                        '#bfdbfe'
+                    ],
+                    borderRadius: 6,
+                    borderSkipped: false
+                }, {
+                    label: '% Acumulado',
+                    data: [28.5, 52.4, 68.2, 79.6, 89.1, 100],
+                    type: 'line',
+                    borderColor: '#dc2626',
+                    backgroundColor: 'rgba(220, 38, 38, 0.1)',
+                    borderWidth: 3,
+                    yAxisID: 'y1',
+                    tension: 0.4,
+                    pointBackgroundColor: '#dc2626',
+                    pointBorderColor: '#ffffff',
+                    pointBorderWidth: 2,
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(30, 41, 59, 0.9)',
+                        titleColor: '#ffffff',
+                        bodyColor: '#ffffff',
+                        borderColor: '#1d4ed8',
+                        borderWidth: 1,
+                        cornerRadius: 8
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        border: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        beginAtZero: true,
+                        grid: {
+                            color: '#f1f5f9'
+                        },
+                        border: {
+                            display: false
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + (value / 1000000) + 'M';
+                            }
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        max: 100,
+                        grid: {
+                            drawOnChartArea: false
+                        },
+                        border: {
+                            display: false
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
                     }
                 }
             }
         });
     }
 
-    // Crear gráfico de Pareto
-    const paretoCtx = document.getElementById('paretoChart');
-    if (paretoCtx) {
-        new Chart(paretoCtx, {
-            type: 'bar',
-            data: paretoData,
+    // SPC Control Chart
+    const spcCtx = document.getElementById('spcChart');
+    if (spcCtx) {
+        const data = [98.2, 97.8, 98.5, 98.1, 97.9, 98.3, 98.0, 98.4, 97.7, 98.6, 98.2, 97.8];
+        const ucl = 98.8;
+        const lcl = 97.2;
+        const centerLine = 98.0;
+        
+        new Chart(spcCtx, {
+            type: 'line',
+            data: {
+                labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                datasets: [{
+                    label: 'Calidad de Atención (%)',
+                    data: data,
+                    borderColor: '#1d4ed8',
+                    backgroundColor: 'rgba(29, 78, 216, 0.1)',
+                    borderWidth: 3,
+                    pointBackgroundColor: '#1d4ed8',
+                    pointBorderColor: '#ffffff',
+                    pointBorderWidth: 2,
+                    pointRadius: 5,
+                    tension: 0.1
+                }, {
+                    label: 'LCS',
+                    data: Array(12).fill(ucl),
+                    borderColor: '#dc2626',
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    pointRadius: 0,
+                    fill: false
+                }, {
+                    label: 'Línea Central',
+                    data: Array(12).fill(centerLine),
+                    borderColor: '#16a34a',
+                    borderWidth: 2,
+                    borderDash: [10, 5],
+                    pointRadius: 0,
+                    fill: false
+                }, {
+                    label: 'LCI',
+                    data: Array(12).fill(lcl),
+                    borderColor: '#dc2626',
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    pointRadius: 0,
+                    fill: false
+                }]
+            },
             options: {
-                ...commonOptions,
+                responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
-                    ...commonOptions.plugins,
-                    title: {
+                    legend: {
                         display: false
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(30, 41, 59, 0.9)',
+                        titleColor: '#ffffff',
+                        bodyColor: '#ffffff',
+                        borderColor: '#1d4ed8',
+                        borderWidth: 1,
+                        cornerRadius: 8,
+                        filter: function(tooltipItem) {
+                            return tooltipItem.datasetIndex === 0;
+                        },
+                        callbacks: {
+                            label: function(context) {
+                                return 'Calidad: ' + context.parsed.y + '%';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        border: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        min: 96.5,
+                        max: 99.5,
+                        grid: {
+                            color: '#f1f5f9'
+                        },
+                        border: {
+                            display: false
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
                     }
                 }
             }
