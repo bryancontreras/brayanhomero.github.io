@@ -763,7 +763,7 @@ body {
 
 /* Dashboard completo - estilo original mejorado */
 .dashboard-full {
-    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    background: var(--background-light);
     border-radius: 0;
     padding: 0;
     margin-bottom: 4rem;

@@ -76,19 +76,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Función para inicializar los gráficos del dashboard
 function initializeCharts() {
-    // Chart 1: Revenue Trend
+    // Chart 1: Pharmaceutical Revenue Trend - Más impactante
     const revenueCtx = document.getElementById('revenueChart');
     if (revenueCtx) {
         new Chart(revenueCtx, {
             type: 'line',
             data: {
-                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                labels: ['2019', '2020', '2021', '2022', '2023', '2024'],
                 datasets: [{
-                    label: 'Revenue (M$)',
-                    data: [2.4, 3.1, 3.8, 4.2],
+                    label: 'Pharmaceutical Revenue (M$ MXN)',
+                    data: [1250, 1480, 2100, 2890, 3650, 4200],
                     borderColor: '#3b82f6',
                     backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                    tension: 0.4
+                    tension: 0.4,
+                    borderWidth: 3,
+                    pointBackgroundColor: '#3b82f6',
+                    pointBorderColor: '#ffffff',
+                    pointBorderWidth: 2,
+                    pointRadius: 6
                 }]
             },
             options: {
@@ -104,8 +109,16 @@ function initializeCharts() {
                         beginAtZero: true,
                         ticks: {
                             callback: function(value) {
-                                return '$' + value + 'M';
+                                return '$' + value + 'M MXN';
                             }
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.1)'
                         }
                     }
                 }
@@ -113,13 +126,13 @@ function initializeCharts() {
         });
     }
 
-    // Chart 2: Pareto Analysis
+    // Chart 2: Pareto Analysis - Medicamentos por especialidad
     const paretoCtx = document.getElementById('paretoChart');
     if (paretoCtx) {
         new Chart(paretoCtx, {
             type: 'bar',
             data: {
-                labels: ['Product A', 'Product B', 'Product C', 'Product D', 'Others'],
+                labels: ['Oncología', 'Cardiología', 'Neurología', 'Diabetes', 'Otros'],
                 datasets: [{
                     label: 'Revenue %',
                     data: [35, 25, 20, 12, 8],
@@ -129,7 +142,15 @@ function initializeCharts() {
                         '#93c5fd',
                         '#dbeafe',
                         '#f3f4f6'
-                    ]
+                    ],
+                    borderColor: [
+                        '#1e40af',
+                        '#2563eb',
+                        '#3b82f6',
+                        '#60a5fa',
+                        '#94a3b8'
+                    ],
+                    borderWidth: 1
                 }]
             },
             options: {
@@ -148,6 +169,14 @@ function initializeCharts() {
                             callback: function(value) {
                                 return value + '%';
                             }
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
                         }
                     }
                 }
