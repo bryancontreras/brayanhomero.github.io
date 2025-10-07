@@ -758,7 +758,7 @@ body {
 /* Projects Section */
 .projects {
     padding: 6rem 0;
-    background: white;
+    background: var(--background-light);
 }
 
 /* Dashboard completo - estilo original mejorado */
